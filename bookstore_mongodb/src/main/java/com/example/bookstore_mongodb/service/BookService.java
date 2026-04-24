@@ -4,9 +4,12 @@ import com.example.bookstore_mongodb.entity.Book;
 import com.example.bookstore_mongodb.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+import java.util.Map;
 
 @Service
 public class BookService {
@@ -22,6 +25,15 @@ public class BookService {
     // get all books
     public List<Book> getAllBooks() {
         return bookRepository.findAll();
+    }
+
+
+    public Optional<Book> getBookById(String id) {
+        return bookRepository.findById(id);
+    }
+
+    public void deleteBookById(String id) {
+        bookRepository.deleteById(id);
     }
 
 }
